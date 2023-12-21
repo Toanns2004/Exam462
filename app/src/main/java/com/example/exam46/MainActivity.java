@@ -3,17 +3,25 @@ package com.example.exam46;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView txtKetQua, txtTinh;
-    Button btnphanTram, btnEC, btnC, btnNhan, btnChia, btnCong, btnTru,
+    Button btnphanTram, btnEC, btnC, btnNhan, btnChia, btnCong, btnTru,btnDel,
             btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,btn0,btnPhay, btnBang;
+    double kq =0;
 
+    boolean dau = false;
 
-    private String number= null;
+    boolean dauBangDaduoocAn ;
+    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,16 +29,232 @@ public class MainActivity extends AppCompatActivity {
 
         anhXa();
 
-        btn0.setOnClickListener(view -> click("0"));
-        btn1.setOnClickListener(view -> click("1"));
-        btn2.setOnClickListener(view -> click("2"));
-        btn3.setOnClickListener(view -> click("3"));
-        btn4.setOnClickListener(view -> click("4"));
-        btn5.setOnClickListener(view -> click("5"));
-        btn6.setOnClickListener(view -> click("6"));
-        btn7.setOnClickListener(view -> click("7"));
-        btn8.setOnClickListener(view -> click("8"));
-        btn9.setOnClickListener(view -> click("9"));
+        btn0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"0");
+            }
+        });
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"1");
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"2");
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"3");
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"4");
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"5");
+            }
+        });
+
+
+
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"6");
+            }
+        });
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"7");
+            }
+        });
+
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"9");
+            }
+        });
+
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dauBangDaduoocAn == true) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                }
+                txtTinh.setText(txtTinh.getText()+"8");
+            }
+        });
+
+
+        btnCong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTinh.setText(txtTinh.getText()+"+");
+            }
+        });
+
+        btnTru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTinh.setText(txtTinh.getText()+"-");
+            }
+        });
+
+        btnNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTinh.setText(txtTinh.getText()+"×");
+            }
+        });
+
+        btnChia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTinh.setText(txtTinh.getText()+"÷");
+            }
+        });
+
+
+
+
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = (String) txtTinh.getText();
+                if(text.length()>=1){
+                    txtTinh.setText(txtTinh.getText().subSequence(0,txtTinh.getText().length()-1));
+
+                }
+            }
+        });
+
+        btnPhay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!dau){
+                    txtTinh.setText(txtTinh.getText()+",");
+                }
+
+                dau = true;
+            }
+        });
+
+
+        btnphanTram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTinh.setText(txtTinh.getText()+"%");
+
+            }
+        });
+
+        btnC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTinh.setText("");
+                txtKetQua.setText("");
+            }
+        });
+
+        btnBang.setOnClickListener(view -> {
+
+                dauBangDaduoocAn= true;
+                String txt = (String) txtTinh.getText();
+                if (txt.contains("+")){
+                    String[] arr = txt.split(Pattern.quote("+"));
+                    kq = Double.parseDouble(arr[0]) + Double.parseDouble(arr[1]);
+                } else if (txt.contains("-")) {
+                    String[] arr = txt.split(Pattern.quote("-"));
+                    kq = Double.parseDouble(arr[0]) - Double.parseDouble(arr[1]);
+                }else if (txt.contains("×")) {
+                    String[] arr = txt.split(Pattern.quote("×"));
+                    kq = Double.parseDouble(arr[0]) * Double.parseDouble(arr[1]);
+                }else if (txt.contains("÷")) {
+                    String[] arr = txt.split("÷");
+                    kq = Double.parseDouble(arr[0]) / Double.parseDouble(arr[1]);
+                }else if(txt.endsWith("%")){
+                    String[] arr = txt.split("%");
+                    double a= Double.parseDouble(arr[0]);
+                    kq=a/100;
+                }
+
+                if (kq==Math.round(kq)){
+                    int rs = (int) kq;
+                    txtKetQua.setText(rs+"");
+                }else {
+                    txtKetQua.setText(kq+"");
+                }
+
+
+
+
+        });
+
+
 
 
     }
@@ -58,14 +282,11 @@ public class MainActivity extends AppCompatActivity {
         btnPhay = findViewById(R.id.buttonPhay);
         btnBang = findViewById(R.id.buttonKetQua);
 
+        btnDel = findViewById(R.id.buttonDelete);
+
     }
 
-    private void click(String view){
-        if(number== null){
-            number =view;
-        }else {
-            number=number+view;
-        }
-        txtTinh.setText(number);
-    }
+
+
+
 }
