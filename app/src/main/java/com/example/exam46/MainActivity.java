@@ -3,21 +3,28 @@ package com.example.exam46;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.mylibrary.Calculation;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView txtKetQua, txtTinh;
-    Button btnphanTram, btnEC, btnC, btnNhan, btnChia, btnCong, btnTru,btnDel,
-            btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,btn0,btnPhay, btnBang;
-    double kq =0;
 
-    boolean dau = false;
+
+
+    TextView txtKetQua, txtTinh;
+    Button btnphanTram, btnEC, btnC, btnNhan, btnChia, btnCong, btnTru,btnAS,
+            btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,btn0,btnPhay, btnBang;
+
+    boolean dauPhay=false ;
 
     boolean dauBangDaduoocAn ;
     
@@ -28,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         anhXa();
+
 
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+
                 }
                 txtTinh.setText(txtTinh.getText()+"3");
             }
@@ -154,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 txtTinh.setText(txtTinh.getText()+"+");
+                dauPhay =false;
             }
         });
 
@@ -161,45 +171,59 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 txtTinh.setText(txtTinh.getText()+"-");
+                dauPhay =false;
             }
         });
 
         btnNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtTinh.setText(txtTinh.getText()+"×");
+                txtTinh.setText(txtTinh.getText()+"*");
+                dauPhay =false;
             }
         });
 
         btnChia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtTinh.setText(txtTinh.getText()+"÷");
+                txtTinh.setText(txtTinh.getText()+"/");
+                dauPhay =false;
             }
         });
 
 
 
 
-        btnDel.setOnClickListener(new View.OnClickListener() {
+        btnAS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTinh.setText(txtKetQua.getText());
+                txtKetQua.setText("");
+                dauBangDaduoocAn = false;
+            }
+        });
+
+        btnEC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String text = (String) txtTinh.getText();
                 if(text.length()>=1){
                     txtTinh.setText(txtTinh.getText().subSequence(0,txtTinh.getText().length()-1));
-
+                    dauBangDaduoocAn = false;
                 }
+
             }
         });
-
         btnPhay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!dau){
-                    txtTinh.setText(txtTinh.getText()+",");
-                }
 
-                dau = true;
+                if (!dauPhay){
+                        txtTinh.setText(txtTinh.getText()+".");
+                }
+                dauPhay =true;
+
+
             }
         });
 
@@ -208,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 txtTinh.setText(txtTinh.getText()+"%");
-
+                dauPhay =true;
             }
         });
 
@@ -217,40 +241,34 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 txtTinh.setText("");
                 txtKetQua.setText("");
+                dauPhay =false;
             }
+
         });
 
         btnBang.setOnClickListener(view -> {
 
+
+
                 dauBangDaduoocAn= true;
                 String txt = (String) txtTinh.getText();
-                if (txt.contains("+")){
-                    String[] arr = txt.split(Pattern.quote("+"));
-                    kq = Double.parseDouble(arr[0]) + Double.parseDouble(arr[1]);
-                } else if (txt.contains("-")) {
-                    String[] arr = txt.split(Pattern.quote("-"));
-                    kq = Double.parseDouble(arr[0]) - Double.parseDouble(arr[1]);
-                }else if (txt.contains("×")) {
-                    String[] arr = txt.split(Pattern.quote("×"));
-                    kq = Double.parseDouble(arr[0]) * Double.parseDouble(arr[1]);
-                }else if (txt.contains("÷")) {
-                    String[] arr = txt.split("÷");
-                    kq = Double.parseDouble(arr[0]) / Double.parseDouble(arr[1]);
-                }else if(txt.endsWith("%")){
-                    String[] arr = txt.split("%");
-                    double a= Double.parseDouble(arr[0]);
-                    kq=a/100;
-                }
 
-                if (kq==Math.round(kq)){
-                    int rs = (int) kq;
-                    txtKetQua.setText(rs+"");
-                }else {
-                    txtKetQua.setText(kq+"");
-                }
+            double kq = Calculation.sketQua(txt);
+            if(txt.endsWith("%")){
+                String[] arr = txt.split("%");
+                double a= Double.parseDouble(arr[0]);
+                kq=a/100;
+            }
+            if (kq==Math.round(kq)){
+                int rs = (int) kq;
+                txtKetQua.setText(rs+"");
+            }else {
+                txtKetQua.setText(kq+"");
+            }
 
 
 
+            dauPhay =false;
 
         });
 
@@ -282,11 +300,54 @@ public class MainActivity extends AppCompatActivity {
         btnPhay = findViewById(R.id.buttonPhay);
         btnBang = findViewById(R.id.buttonKetQua);
 
-        btnDel = findViewById(R.id.buttonDelete);
+        btnAS = findViewById(R.id.buttonAS);
 
     }
 
 
 
 
+
 }
+
+
+//                if (txt.contains("+")) {
+//                    String[] arr = txt.split(Pattern.quote("+"));
+//                    for (int i = 0; i < arr.length; i++) {
+//
+//                        kq += Double.parseDouble(arr[i]);
+//
+//                    }
+//
+//
+//
+//                } else if (txt.contains("-")) {
+//
+//                        String[] arr = txt.split(Pattern.quote("-"));
+//                        double k = Double.parseDouble(arr[0]);
+//
+//                        for (int i = 1; i < arr.length; i++) {
+//                            k -=Double.parseDouble(arr[i]);
+//
+//                        }
+//                        kq = k;
+//
+//
+//                }else if (txt.contains("×")) {
+//                    String[] arr = txt.split(Pattern.quote("×"));
+//                    double k = Double.parseDouble(arr[0]);
+//                    for (int i = 1; i < arr.length; i++) {
+//                        k *=Double.parseDouble(arr[i]);
+//
+//                    }
+//                    kq = k;
+//                }else if (txt.contains("÷")) {
+//                    String[] arr = txt.split("÷");
+//                    double k = Double.parseDouble(arr[0]);
+//                    for (int i = 1; i < arr.length; i++) {
+//                        k /=Double.parseDouble(arr[i]);
+//
+//                    }
+//                    kq = k;
+
+//
