@@ -10,17 +10,40 @@ import java.util.regex.Pattern;
 public class Calculation {
     public static void main(String[] args) {
 
-//        String a = "9.5*2+8/5+4*2+8/2";
-        String a = "19+1.6+8+4";
-        List<String> s = tacSo(a);
-        List<String> dau = tachChuoi(a);
+        String a = "9.5*2+8/5+4*2+8/2+";
 
-        Calculation.nhanChia(dau,s);
-        Calculation.congTru(dau,s);
+        float kq = (float) (5.05-5);
+        System.out.println(kq);
+//        String a = "19-4";
 
+//        Pattern pattern = Pattern.compile("[+\\-*/].*$");
+//        Matcher matcher = pattern.matcher(a);
+//
+//        if (matcher.matches()) {
+//            System.out.println("Sai");
+//        } else {
+//            System.out.println("Đúng");
+//        }
+
+//        String start = "^[+\\-*/].*";
+//        boolean startsWithOperator = a.matches(start);
+//        String end = ".*[+\\-*/]$";
+//        boolean endsWithOperator = a.matches(end);
+//        if(startsWithOperator || endsWithOperator){
+//            System.out.println("ĐÚNG");
+//        } else {
+//            System.out.println("SAI");
+//        }
+
+//        List<String> s = tacSo(a);
+//        List<String> dau = tachChuoi(a);
+////
+////        Calculation.nhanChia(dau,s);
 //        Calculation.congTru(dau,s);
+//
+////        Calculation.congTru(dau,s);
 //        for (String d: s){
-//            System.out.println(d+"nnnnn");
+//            System.out.println(d);
 //        }
 //
 //        for (String b: dau){
@@ -37,16 +60,16 @@ public class Calculation {
 //        }
     }
 
-    public static double sketQua(String input){
+    public static float sketQua(String input){
 
-        double a = 0;
+        float a = 0;
         List<String> so = Calculation.tacSo(input);
         List<String> dau =Calculation.tachChuoi(input);
 
         Calculation.nhanChia(dau,so);
         Calculation.congTru(dau,so);
 
-        a = Double.parseDouble(String.valueOf(so.get(0)));
+        a = Float.parseFloat(String.valueOf(so.get(0)));
         return a;
     }
 
@@ -170,8 +193,8 @@ public class Calculation {
 
     public static List<String> tacSo(String c){
 
-        Pattern p = Pattern.compile("(\\-?\\d+(\\.\\d+)?)");
-        Matcher m = p.matcher(c);
+        Pattern pattern = Pattern.compile("\\b\\d+(\\.\\d+)?\\b");
+        Matcher m = pattern.matcher(c);
 
         List<String> list = new ArrayList<>();
         while (m.find()){

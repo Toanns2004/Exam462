@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mylibrary.Calculation;
 
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     boolean dauPhay=false ;
 
     boolean dauBangDaduoocAn ;
-    
+    boolean dauPhanTram;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,10 +209,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = (String) txtTinh.getText();
-                if(text.length()>=1){
+                if(dauBangDaduoocAn ){
+                    txtKetQua.setText("");
+                    txtTinh.setText("");
+                    dauPhay =false;
+                    dauBangDaduoocAn=false;
+                }else if(text.length()>=1){
                     txtTinh.setText(txtTinh.getText().subSequence(0,txtTinh.getText().length()-1));
+//                    txtKetQua.setText("");
                     dauBangDaduoocAn = false;
                 }
+
 
             }
         });
@@ -231,8 +240,16 @@ public class MainActivity extends AppCompatActivity {
         btnphanTram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtTinh.setText(txtTinh.getText()+"%");
-                dauPhay =true;
+                String tx = (String) txtTinh.getText();
+                if (tx.equals("")){
+                    txtKetQua.setText(0+"");
+                }else {
+                    float a =  Float.parseFloat(tx);
+                    float kqPT = a/100;
+                    txtKetQua.setText(kqPT+"");
+                    dauPhay =true;
+                }
+
             }
         });
 
@@ -247,26 +264,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnBang.setOnClickListener(view -> {
-
-
-
                 dauBangDaduoocAn= true;
                 String txt = (String) txtTinh.getText();
 
-            double kq = Calculation.sketQua(txt);
-            if(txt.endsWith("%")){
-                String[] arr = txt.split("%");
-                double a= Double.parseDouble(arr[0]);
-                kq=a/100;
-            }
-            if (kq==Math.round(kq)){
-                int rs = (int) kq;
-                txtKetQua.setText(rs+"");
-            }else {
-                txtKetQua.setText(kq+"");
-            }
+            String start = "^[+\\-*/.].*";
+            boolean startsWithOperator = txt.matches(start);
+            String end = ".*[+\\-*/.]$";
+            boolean endsWithOperator = txt.matches(end);
+            if(startsWithOperator || endsWithOperator){
+                Toast.makeText(this, "Không thể thục hiện phép tính", Toast.LENGTH_SHORT).show();
 
+            } else {
+                float kq = Calculation.sketQua(txt);
+                if(txt.equals("%")){
+                    String[] arr = txt.split("%");
+                    double so= Double.parseDouble(arr[0]);
+                    kq = (float) (so/100);
 
+                }
+                if (kq==Math.round(kq)){
+                    int rs = (int) kq;
+                    txtKetQua.setText(rs+"");
+                }else {
+                    txtKetQua.setText(kq+"");
+                }
+            }
 
             dauPhay =false;
 
