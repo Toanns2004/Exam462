@@ -2,9 +2,11 @@ package com.example.exam46;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    TextView txtKetQua, txtTinh;
+    TextView txtKetQua;
+    TextView txtTinh ;
     Button btnphanTram, btnEC, btnC, btnNhan, btnChia, btnCong, btnTru,btnAS,
             btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,btn0,btnPhay, btnBang;
 
@@ -164,14 +167,17 @@ public class MainActivity extends AppCompatActivity {
         btnCong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dauBangDaduoocAn=false;
                 txtTinh.setText(txtTinh.getText()+"+");
                 dauPhay =false;
+
             }
         });
 
         btnTru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dauBangDaduoocAn=false;
                 txtTinh.setText(txtTinh.getText()+"-");
                 dauPhay =false;
             }
@@ -267,11 +273,19 @@ public class MainActivity extends AppCompatActivity {
                 dauBangDaduoocAn= true;
                 String txt = (String) txtTinh.getText();
 
-            String start = "^[+\\-*/.].*";
+            if (txt.equals("")){
+                Toast.makeText(this, "Vui lòng nhập phép tính", Toast.LENGTH_SHORT).show();
+            }
+            String start = "^[*/].*";
             boolean startsWithOperator = txt.matches(start);
+
+            if(txt.startsWith("+") || txt.startsWith("-")){
+                txt = "0"+txt;
+            }
+
             String end = ".*[+\\-*/.]$";
             boolean endsWithOperator = txt.matches(end);
-            if(startsWithOperator || endsWithOperator){
+            if( endsWithOperator || startsWithOperator){
                 Toast.makeText(this, "Không thể thục hiện phép tính", Toast.LENGTH_SHORT).show();
 
             } else {
