@@ -28,9 +28,15 @@ public class MainActivity extends AppCompatActivity {
     Button btnphanTram, btnEC, btnC, btnNhan, btnChia, btnCong, btnTru,btnAS,
             btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,btn0,btnPhay, btnBang;
 
-    boolean dauPhay=false ;
+    boolean dauPhay ;
 
     boolean dauBangDaduoocAn ;
+    boolean dauCong=true;
+    boolean dauTru=true;
+    boolean dauNhan;
+    boolean dauChia;
+
+
     boolean dauPhanTram;
 
 
@@ -45,72 +51,109 @@ public class MainActivity extends AppCompatActivity {
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true || dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
+
                 }
                 txtTinh.setText(txtTinh.getText()+"0");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
+
         });
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"1");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"2");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
-
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"3");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"4");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"5");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
@@ -119,47 +162,71 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"6");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"7");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"9");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dauBangDaduoocAn == true) {
+                if(dauBangDaduoocAn == true ||dauPhanTram) {
                     txtTinh.setText("");
                     txtKetQua.setText("");
                     dauBangDaduoocAn = false;
+                    dauPhanTram= false;
                 }
                 txtTinh.setText(txtTinh.getText()+"8");
+                dauPhay=false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
@@ -167,9 +234,20 @@ public class MainActivity extends AppCompatActivity {
         btnCong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dauBangDaduoocAn=false;
-                txtTinh.setText(txtTinh.getText()+"+");
-                dauPhay =false;
+                if (!dauTru || !dauChia|| !dauNhan) {
+                    dauCong=false;
+                }
+                if(dauBangDaduoocAn == true || dauPhanTram) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                    dauPhanTram= false;
+                }
+                if (dauCong){
+                    txtTinh.setText(txtTinh.getText()+"+");
+                    dauCong=false;
+                }
+
 
             }
         });
@@ -177,25 +255,58 @@ public class MainActivity extends AppCompatActivity {
         btnTru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dauBangDaduoocAn=false;
-                txtTinh.setText(txtTinh.getText()+"-");
-                dauPhay =false;
+                if (!dauCong || !dauChia|| !dauNhan) {
+                    dauTru=false;
+                }
+                if(dauBangDaduoocAn == true || dauPhanTram) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                    dauPhanTram= false;
+                }
+                if (dauTru){
+                    txtTinh.setText(txtTinh.getText()+"-");
+                    dauTru = false;
+                }
             }
         });
 
         btnNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtTinh.setText(txtTinh.getText()+"*");
-                dauPhay =false;
+                if (!dauCong || !dauChia|| !dauTru) {
+                    dauNhan=false;
+                }
+                if(dauBangDaduoocAn == true || dauPhanTram) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                    dauPhanTram= false;
+                }
+                if (dauNhan){
+                    txtTinh.setText(txtTinh.getText()+"*");
+                    dauNhan=false;
+                }
             }
         });
 
         btnChia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtTinh.setText(txtTinh.getText()+"/");
-                dauPhay =false;
+                if (!dauCong || !dauTru|| !dauNhan) {
+                    dauChia=false;
+                }
+                if(dauBangDaduoocAn == true || dauPhanTram) {
+                    txtTinh.setText("");
+                    txtKetQua.setText("");
+                    dauBangDaduoocAn = false;
+                    dauPhanTram= false;
+                }
+                if (dauChia){
+                    txtTinh.setText(txtTinh.getText()+"/");
+                    dauChia=false;
+                }
+
             }
         });
 
@@ -208,6 +319,10 @@ public class MainActivity extends AppCompatActivity {
                 txtTinh.setText(txtKetQua.getText());
                 txtKetQua.setText("");
                 dauBangDaduoocAn = false;
+                dauCong=true;
+                dauTru=true;
+                dauNhan= true;
+                dauChia=true;
             }
         });
 
@@ -215,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = (String) txtTinh.getText();
-                if(dauBangDaduoocAn ){
+                if(dauBangDaduoocAn || dauPhanTram){
                     txtKetQua.setText("");
                     txtTinh.setText("");
                     dauPhay =false;
@@ -225,35 +340,73 @@ public class MainActivity extends AppCompatActivity {
 //                    txtKetQua.setText("");
                     dauBangDaduoocAn = false;
                 }
-
+                dauCong=true;
+                dauTru= true;
 
             }
         });
         btnPhay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!dauPhay){
+                String tx = (String) txtTinh.getText();
+                String end = ".*[+\\-*/]$";
+                boolean endsWithOperator = tx.matches(end);
+                if (!endsWithOperator){
+                    if (!dauPhay){
                         txtTinh.setText(txtTinh.getText()+".");
+                    }
                 }
-                dauPhay =true;
 
-
+                dauPhay=true;
             }
         });
 
 
         btnphanTram.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                dauPhanTram=true;
                 String tx = (String) txtTinh.getText();
+
+                String end = ".*[+\\-*/]$";
+                boolean endsWithOperator = tx.matches(end);
                 if (tx.equals("")){
-                    txtKetQua.setText(0+"");
-                }else {
-                    float a =  Float.parseFloat(tx);
-                    float kqPT = a/100;
-                    txtKetQua.setText(kqPT+"");
-                    dauPhay =true;
+                    Toast.makeText(MainActivity.this, "Vui lòng nhập phép tính", Toast.LENGTH_SHORT).show();
+                }else
+                if (endsWithOperator){
+                    Toast.makeText(MainActivity.this, "Nhập Sai Dữ Liệu", Toast.LENGTH_SHORT).show();
+                }else
+                 if(!Pattern.matches(("[+\\-*/]"),tx)){
+                    if(tx.startsWith("+") || tx.startsWith("-")){
+                        tx = "0"+tx;
+                    }
+                    String start = "^[*/].*";
+                    boolean startsWithOperator = tx.matches(start);
+                    if( endsWithOperator || startsWithOperator){
+                        Toast.makeText(MainActivity.this, "Không thể thục hiện phép tính", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        float kq = Calculation.sketQua(tx);
+                        float kqPT = kq/100;
+                        txtKetQua.setText(kqPT+"");
+                    }
+
+                } else if (dauBangDaduoocAn) {
+                    txtTinh.setText(txtKetQua.getText());
+                    String txx = (String) txtTinh.getText();
+                    float b = Float.parseFloat(txx);
+                    float kqPT = b / 100;
+                    txtKetQua.setText(kqPT + "");
+                    dauPhay = true;
+                } else if (tx.equals("")) {
+                    txtKetQua.setText(0 + "");
+                } else {
+                    float a = Float.parseFloat(tx);
+                    float kqPT = a / 100;
+                    txtKetQua.setText(kqPT + "");
+                    dauPhay = true;
+
                 }
 
             }
@@ -265,37 +418,33 @@ public class MainActivity extends AppCompatActivity {
                 txtTinh.setText("");
                 txtKetQua.setText("");
                 dauPhay =false;
+                dauCong=true;
+                dauTru= true;
             }
 
         });
 
         btnBang.setOnClickListener(view -> {
                 dauBangDaduoocAn= true;
+                dauChia=false;
+                dauNhan=false;
                 String txt = (String) txtTinh.getText();
 
             if (txt.equals("")){
                 Toast.makeText(this, "Vui lòng nhập phép tính", Toast.LENGTH_SHORT).show();
+            }else if(txt.startsWith("+") || txt.startsWith("-")){
+                txt = "0"+txt;
             }
             String start = "^[*/].*";
             boolean startsWithOperator = txt.matches(start);
 
-            if(txt.startsWith("+") || txt.startsWith("-")){
-                txt = "0"+txt;
-            }
-
-            String end = ".*[+\\-*/.]$";
+            String end = ".*[+\\-*/]$";
             boolean endsWithOperator = txt.matches(end);
             if( endsWithOperator || startsWithOperator){
                 Toast.makeText(this, "Không thể thục hiện phép tính", Toast.LENGTH_SHORT).show();
 
             } else {
                 float kq = Calculation.sketQua(txt);
-                if(txt.equals("%")){
-                    String[] arr = txt.split("%");
-                    double so= Double.parseDouble(arr[0]);
-                    kq = (float) (so/100);
-
-                }
                 if (kq==Math.round(kq)){
                     int rs = (int) kq;
                     txtKetQua.setText(rs+"");
@@ -304,7 +453,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            dauPhay =false;
+            dauPhay =true;
 
         });
 
@@ -342,48 +491,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    private void tinh(String txt){
+        if (txt.equals("")){
+            Toast.makeText(this, "Vui lòng nhập phép tính", Toast.LENGTH_SHORT).show();
+        }
 
+        if(txt.startsWith("+") || txt.startsWith("-")){
+            txt = "0"+txt;
+        }
+        String start = "^[*/].*";
+        boolean startsWithOperator = txt.matches(start);
 
+        String end = ".*[+\\-*/]$";
+        boolean endsWithOperator = txt.matches(end);
+        if( endsWithOperator || startsWithOperator){
+            Toast.makeText(this, "Không thể thục hiện phép tính", Toast.LENGTH_SHORT).show();
+
+        } else {
+            float kq = Calculation.sketQua(txt);
+            if (kq==Math.round(kq)){
+                int rs = (int) kq;
+                 txtKetQua.setText(rs+"");
+            }else {
+                 txtKetQua.setText(kq+"");
+            }
+        }
+
+    }
 }
 
 
-//                if (txt.contains("+")) {
-//                    String[] arr = txt.split(Pattern.quote("+"));
-//                    for (int i = 0; i < arr.length; i++) {
-//
-//                        kq += Double.parseDouble(arr[i]);
-//
-//                    }
-//
-//
-//
-//                } else if (txt.contains("-")) {
-//
-//                        String[] arr = txt.split(Pattern.quote("-"));
-//                        double k = Double.parseDouble(arr[0]);
-//
-//                        for (int i = 1; i < arr.length; i++) {
-//                            k -=Double.parseDouble(arr[i]);
-//
-//                        }
-//                        kq = k;
-//
-//
-//                }else if (txt.contains("×")) {
-//                    String[] arr = txt.split(Pattern.quote("×"));
-//                    double k = Double.parseDouble(arr[0]);
-//                    for (int i = 1; i < arr.length; i++) {
-//                        k *=Double.parseDouble(arr[i]);
-//
-//                    }
-//                    kq = k;
-//                }else if (txt.contains("÷")) {
-//                    String[] arr = txt.split("÷");
-//                    double k = Double.parseDouble(arr[0]);
-//                    for (int i = 1; i < arr.length; i++) {
-//                        k /=Double.parseDouble(arr[i]);
-//
-//                    }
-//                    kq = k;
 
-//

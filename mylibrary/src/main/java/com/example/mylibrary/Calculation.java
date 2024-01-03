@@ -12,12 +12,16 @@ public class Calculation {
 
         String a = "9.5*2+8/5+4*2+8/2+";
         List<String > b = new ArrayList<>();
-        StringBuilder _sb = new StringBuilder("Sam");
-        String _s = "Jam";
 
-        _sb.insert(0, "Hello ");
 
-        System.out.println(_sb);
+        String end = ".*[+\\-*/]$";
+        boolean endsWithOperator = a.matches(end);
+        if(!Pattern.matches(("[+\\-*/]"),a)) {
+
+            System.out.println("DDDUngs");
+        }else {
+            System.out.println("Sai");
+        }
 //        String a = "19-4";
 
 //        Pattern pattern = Pattern.compile("[+\\-*/].*$");
